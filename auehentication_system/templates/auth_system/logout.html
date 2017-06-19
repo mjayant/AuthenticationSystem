@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<style>
+.center{
+    position:absolute;
+    width:780px;
+    height:650px;
+    left:50%;
+    top:50%;
+    margin-left:-390px;
+    margin-top:-325px;
+    color:black;
+}
+
+.container_text {
+    height: 100%;
+    width:800px;
+    justify-content: center;
+    align-items: center;
+}
+</style>
+<div class='container container_text'>
+	<div class='row'>
+		<div class='col-xs-6 col-sm-offset-3 ' >
+		<lead>
+			SuccesFully logged out 
+		</lead>
+		</div>
+	</div>
+</div>
+{% endblock %}

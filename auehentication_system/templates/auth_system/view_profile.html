@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{%load staticfiles%}
+
+{%block content %}
+<div class='container'>
+<form method='POST'>{%csrf_token%}
+	<div class='row'>
+		<div class='col-sm-4 col-sm-offset-3'>
+			User Name  : {{request.user.username}}<br>
+			First Name : {{request.user.first_name}}<br>
+			Last Name  : {{request.user.last_name}}<br>
+			Email      : {{request.user.email}}<br>
+		</div>
+	</div>
+		<div class='row'>
+			<div class='col-sm-4 col-sm-offset-3'>
+				<button type="submit" class="btn btn-primary" >Edit Profile</button>
+			</div>
+		</div>
+	</div>
+</form>
+</div>
+{%endblock%}

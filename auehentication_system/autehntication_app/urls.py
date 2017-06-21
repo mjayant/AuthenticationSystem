@@ -13,5 +13,6 @@ urlpatterns = [
     url(r'^register/$',views.register, name='register'),
     url(r'^viewprofile/$',views.view_profile, name='view_profile'),
     url(r'^editprofile/$',views.edit_profile, name='edit_profilee'),
+    url(r'^editprofile/password/$',views.changePassword, name='changePassword'),
 
 ]

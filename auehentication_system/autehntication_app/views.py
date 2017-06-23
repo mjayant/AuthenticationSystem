@@ -4,6 +4,7 @@ from .forms import CustomUserCreationForm, CustomUserChangeForm
 from django.contrib import messages
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.decorators import login_required
+from django.core.urlresolvers import reverse
 # Create your views here.
 
 
@@ -42,7 +43,7 @@ def register(request):
 	if form.is_valid():
 		instance = form.save(commit=False)
 		instance.save()
-		return redirect('/auth_sys/login')
+		return redirect(reverse('login'))
 	else:
 		messages.error(request, "Error")
 
@@ -55,7 +56,8 @@ def view_profile(request):
 	"""
 	#import pdb ;pdb.set_trace()
 	if  request.method == 'POST':
-		return redirect('/auth_sys/editprofile')
+		return redirect(reverse('edit_profilee'))
+		#return redirect('/auth_sys/editprofile')
 	return render(request, 'view_profile.html',{})
 
 #@login_required
@@ -69,7 +71,8 @@ def edit_profile(request):
 		if form.is_valid():
 			instance = form.save(commit=False)
 			instance.save()
-			return redirect('/auth_sys/viewprofile')
+			return redirect(reverse('view_profile'))
+			#return redirect('/auth_sys/viewprofile')
 		else:
 			messages.error(request, "Error")
 	else:
@@ -90,7 +93,8 @@ def  changePassword(request):
 			instance = form.save(commit=False)
 			instance.save()
 			update_session_auth_hash(request, form.user)
-			return redirect('/auth_sys/viewprofile')
+			return redirect(reverse('view_profile'))
+			#return redirect('/auth_sys/viewprofile')
 		else:
 			messages.error(request, "Error")
 	else:

@@ -49,7 +49,7 @@ def register(request):
 	return render(request, 'register.html', context)
 
 
-@login_required
+#@login_required
 def view_profile(request):
 	"""
 	"""
@@ -58,7 +58,7 @@ def view_profile(request):
 		return redirect('/auth_sys/editprofile')
 	return render(request, 'view_profile.html',{})
 
-@login_required
+#@login_required
 def edit_profile(request):
 	"""
 	"""
@@ -78,7 +78,7 @@ def edit_profile(request):
 
 	return render(request, 'edit_profilee.html',context)
 
-@login_required
+#@login_required
 def  changePassword(request):
 	"""
 	"""

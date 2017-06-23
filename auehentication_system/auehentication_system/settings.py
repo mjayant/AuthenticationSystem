@@ -50,6 +50,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.security.SecurityMiddleware',
+    'autehntication_app.middleware.LoginMiddleware',
 )
 
 ROOT_URLCONF = 'auehentication_system.urls'
@@ -114,3 +115,6 @@ LOGIN_REDIRECT_URL = '/auth_sys'
 
 EMAIL_HOST = 'localhost'
 EMAIL_PORT = 1025
+
+ALLOW_URLS = ['^auth_sys/login$', '^auth_sys/register$']
+LOGIN_URL = '/auth_sys/login'

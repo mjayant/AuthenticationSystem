@@ -110,4 +110,7 @@ STATICFILES_DIRS = (
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
-#LOGIN_REDIRECT_URL = '/auth_sys'
+LOGIN_REDIRECT_URL = '/auth_sys'
+
+EMAIL_HOST = 'localhost'
+EMAIL_PORT = 1025

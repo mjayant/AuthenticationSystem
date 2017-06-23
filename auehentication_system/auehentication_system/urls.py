@@ -9,4 +9,5 @@ urlpatterns = [
     url(r'^$', redirect_login, name='redirect_login'),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^auth_sys/', include('autehntication_app.urls')),
+    #url(r'^accounts/profile/$',views.view_profile, name='view_profile'),
 ]

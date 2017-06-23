@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth.forms import UserChangeForm, PasswordChangeForm
+from django.contrib.auth.forms import UserChangeForm, PasswordChangeForm, AuthenticationForm
 from .forms import CustomUserCreationForm, CustomUserChangeForm
 from django.contrib import messages
 from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 
@@ -10,6 +11,27 @@ def home(request):
 	"""
 	"""
 	return render(request, 'home.html', {})
+
+# def login(request):
+# 	"""
+# 	"""
+# 	form = AuthenticationForm(request.POST or None)
+# 	context = {}
+# 	context['form'] = form
+# 	if  request.method == 'POST':
+# 		#import pdb ;pdb.set_trace()
+# 		if form.is_valid():
+# 			instance = form.save(commit=False)
+# 			instance.save()
+# 			return redirect('/auth_sys')
+# 		# else:
+# 		# 	messages.error(request, "Error")
+# 	else:
+
+# 		if request.user.is_authenticated():
+# 			redirect('/auth_sys')
+
+# 	return render(request, 'login.html', context)
 
 def register(request):
 	"""
@@ -27,7 +49,7 @@ def register(request):
 	return render(request, 'register.html', context)
 
 
-
+@login_required
 def view_profile(request):
 	"""
 	"""
@@ -36,6 +58,7 @@ def view_profile(request):
 		return redirect('/auth_sys/editprofile')
 	return render(request, 'view_profile.html',{})
 
+@login_required
 def edit_profile(request):
 	"""
 	"""
@@ -55,7 +78,7 @@ def edit_profile(request):
 
 	return render(request, 'edit_profilee.html',context)
 
-
+@login_required
 def  changePassword(request):
 	"""
 	"""

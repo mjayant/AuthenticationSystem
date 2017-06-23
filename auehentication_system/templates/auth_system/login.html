@@ -5,10 +5,30 @@
 <div class='container'>
 	<div class='row'>
 		<div class='col-xs-6 col-sm-offset-3'>
-		<form method="post" action='{%url "home"%}'>
+		<script>
+            {% if messages %}
+                {% for message in messages %}
+                    alert(message);
+                {% endfor %}
+            {% endif %}
+        </script>
+		<form method="post">
 			{% csrf_token %}
 			{{form|crispy}}
+			{% if form.non_field_errors %}
+    			<ul class='form-errors'>
+        			{% for error in form.non_field_errors %}
+            			<li>{{ error }}</li>
+        			{% endfor %}
+    			</ul>
+			{% endif %}
+			{{ form.non_field_errors }}
 			<input type="submit" class='btn btn-block btn-primary col-sm-4' value="Log in" />
+			<ul class="nav navbar-nav">
+				<li>
+				<a href="{%url 'forgotpassword' %}">Forgot Password</a>
+				</li>
+			<ul>
 		</form>
 		</div>
 	</div>

@@ -116,5 +116,6 @@ LOGIN_REDIRECT_URL = '/auth_sys'
 EMAIL_HOST = 'localhost'
 EMAIL_PORT = 1025
 
-ALLOW_URLS = ['^auth_sys/login$', '^auth_sys/register$']
+ALLOW_URLS = ['^auth_sys/login$', '^auth_sys/register$', '^auth_sys/forgotpassword/done$', '^auth_sys/passwordresetconfirm/(?P<uidb64>[0-9A-Za-z_\-]+)/(?P<token>[0-9A-Za-z]{1,13}-[0-9A-Za-z]{1,20})$',
+'^auth_sys/passwordresetconfirm/complete$']
 LOGIN_URL = '/auth_sys/login'

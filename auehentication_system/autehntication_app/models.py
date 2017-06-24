@@ -11,6 +11,10 @@ class UserProfile(models.Model):
 	birth_date = models.DateField(auto_now_add=True)
 	city = models.CharField(max_length=50)
 
+	def __str__(self):
+		"""
+		"""
+		return self.user.username
 
 
 def save_profile(sender, **kwargs):

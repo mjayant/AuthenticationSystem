@@ -14,7 +14,9 @@ class LoginMiddleware(object):
 		print request.path
 		print request.path.lstrip('/').rstrip('/')
 		#import pdb ;pdb.set_trace()
-		if not request.user.is_authenticated()   and not any( [item.match(request.path.lstrip('/').rstrip('/')) for item in url_complie_regex]):
+		if  not request.user.is_authenticated() and request.path.lstrip('/').rstrip('/') == 'auth_sys/forgotpassword':
+			return None
+		elif not request.user.is_authenticated()   and not any( [item.match(request.path.lstrip('/').rstrip('/')) for item in url_complie_regex]):
 			return redirect(settings.LOGIN_URL)
 		elif request.user.is_authenticated() and any( item.match(request.path) for item in url_complie_regex):
 			return redirect('/auth_sys/')

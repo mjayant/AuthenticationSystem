@@ -40,4 +40,4 @@ class CustomUserChangeForm(UserChangeForm):
 class UserProfileForm(forms.ModelForm):
 	class Meta:
 		model = UserProfile
-		fields = ('website', 'city')
+		fields = ('website', 'city', 'image')

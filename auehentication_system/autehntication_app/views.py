@@ -12,10 +12,10 @@ from django.contrib.auth.models import User
 # Create your views here.
 
 
-def home(request):
-	"""
-	"""
-	return render(request, 'home.html', {})
+# def home(request):
+# 	"""
+# 	"""
+# 	return render(request, 'home.html', {})
 
 # def login(request):
 # 	"""
@@ -55,21 +55,26 @@ def register(request):
 
 
 #@login_required
-def view_profile(request):
+def view_profile(request, pk=None):
 	"""
 	"""
 	#import pdb ;pdb.set_trace()
+	if pk:
+		user = User.objects.get(pk=pk)
+	
+	else:
+		user = request.user
 	if  request.method == 'POST':
 		return redirect(reverse('edit_profilee'))
 		#return redirect('/auth_sys/editprofile')
-	return render(request, 'view_profile.html',{})
+	return render(request, 'view_profile.html',{'user':user})
 
 #@login_required
 def edit_profile(request):
     """
     """
     user_form = CustomUserChangeForm(instance=request.user)
-    ProfileInlineFormSet = inlineformset_factory(User, UserProfile, fields=('website','city'))
+    ProfileInlineFormSet = inlineformset_factory(User, UserProfile, fields=('website','city'), can_delete=False)
     formset = ProfileInlineFormSet(instance=request.user)
     context = {}
     #import pdb ;pdb.set_trace()

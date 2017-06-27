@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'autehntication_app',
     'crispy_forms',
+    'post_app'
 )
 
 MIDDLEWARE_CLASSES = (
@@ -58,7 +59,9 @@ ROOT_URLCONF = 'auehentication_system.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, "templates", "auth_system")],
+        'DIRS': [os.path.join(BASE_DIR, "templates", "auth_system"),
+        os.path.join(BASE_DIR, "templates", "post"),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -109,9 +112,12 @@ STATICFILES_DIRS = (
    # '/var/www/static/',
 )
 
+MEDIA_ROOT = os.path.join(BASE_DIR, "static", "images")
+MEDIA_URL = '/media/'
+
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
 
-LOGIN_REDIRECT_URL = '/auth_sys'
+LOGIN_REDIRECT_URL = '/post'
 
 EMAIL_HOST = 'localhost'
 EMAIL_PORT = 1025

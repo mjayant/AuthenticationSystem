@@ -4,7 +4,7 @@
 
 {% block content %}
 <div class='container'>
-<form method='POST' action='{%url "edit_profilee"%}'>{%csrf_token%}
+<form method='POST' action='{%url "edit_profilee"%}' enctype='multipart/form-data'>{%csrf_token%}
 
 	<div class='row'>
 		<div class='col-sm-6 col-sm-offset-3'>

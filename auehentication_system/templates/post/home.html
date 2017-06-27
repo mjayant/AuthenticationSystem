@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{%block title%}Welcome |{% endblock %}
+
+
+ {% block jumbotron %}
+ {% endblock %}
+ 
+{% block content %}
+
+<div class='container'>
+<div class="row">
+	<div class="col-md-4">
+		
+		<form method="POST" action="">{%csrf_token%}
+
+			{{form|crispy}}
+			{% if form.errors %}
+				sldknflkdsnflkndslnflkdsvlk
+			    {% for field in form %}
+			        {% for error in field.errors %}
+			            <div class="alert alert-danger">
+			                <strong>{{ error|escape }}</strong>
+			            </div>
+			        {% endfor %}
+			    {% endfor %}
+			    {% for error in form.non_field_errors %}
+			        <div class="alert alert-danger">
+			            <strong>{{ error|escape }}</strong>
+			        </div>
+			    {% endfor %}
+			{% endif %}
+			<input type="submit" class="btn btn-primary" value="Post">
+			
+		</form>
+
+	</div>
+
+</div>
+<div class="row">
+<div class="col-md-3">
+	{% for data in post_data %}
+		<h2>{{data.post}} </h2><br>
+		<lead>Posted By :{{data.user}} at {{data.created}}</lead><br>
+	{%endfor %}
+</div>
+	<div class="col-md-3 pull-right">
+	{% for user in user_lst %}
+		<a href="{% url 'view_profile_with_pk' pk=user.pk %}"><h3>{{user.username}}</h3></a>
+		<a href="{% url 'change_friends' operation='add' pk=user.pk %}"><button type="button" class="btn btn-success">Add Freind</button></a>
+		<br>
+	{%endfor %}
+	</div>
+		
+		<div class="col-md-3 pull-right">
+			<h1>Friends</h1>
+			{% for friend in friends %}
+				<a href="{% url 'view_profile_with_pk' pk=friend.pk %}"><h3>{{friend.username}}</h3></a>
+				<a href="{% url 'change_friends' operation='remove' pk=friend.pk %}"><button type="button" class="btn btn-danger">Remove Freind</button></a>
+				<!-- <lead> {{friend.username}}</lead><br> -->
+			{% endfor %}
+		</div>
+
+	
+
+</div>
+</div>
+{% endblock %}
+

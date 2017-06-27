@@ -15,14 +15,7 @@
 		<form method="post">
 			{% csrf_token %}
 			{{form|crispy}}
-			{% if form.non_field_errors %}
-    			<ul class='form-errors'>
-        			{% for error in form.non_field_errors %}
-            			<li>{{ error }}</li>
-        			{% endfor %}
-    			</ul>
-			{% endif %}
-			{{ form.non_field_errors }}
+			{{form.erros}}
 			<input type="submit" class='btn btn-block btn-primary col-sm-4' value="Log in" />
 			<ul class="nav navbar-nav">
 				<li>

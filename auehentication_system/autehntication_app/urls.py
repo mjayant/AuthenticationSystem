@@ -13,11 +13,12 @@ urlpatterns = [
     # url(r'^$', 'auehentication_system.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
 
-    url(r'^$', views.home, name='home'),
+    #url(r'^$', views.home, name='home'),
     url(r'^login/$', login, {'template_name':'login.html'}, name='login'),
     url(r'^logout/$', logout, {'template_name': 'logout.html'}, name='logout'),
     url(r'^register/$',views.register, name='register'),
     url(r'^viewprofile/$',views.view_profile, name='view_profile'),
+    url(r'^viewprofile/(?P<pk>\d+)/$',views.view_profile, name='view_profile_with_pk'),
     url(r'^editprofile/$',views.edit_profile, name='edit_profilee'),
     url(r'^editprofile/password/$',views.changePassword, name='changePassword'),
     url(r'^forgotpassword/$',password_reset,  {'template_name': 'password_reset_form.html'}, name='forgotpassword'),
